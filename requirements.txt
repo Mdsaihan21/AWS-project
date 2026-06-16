@@ -1,4 +1,4 @@
 Flask
 Flask-MySQLdb
 python-dotenv
-myql-client
+mysql-client
