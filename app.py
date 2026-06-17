@@ -109,8 +109,15 @@ def index():
     students = cursor.fetchall()
     cursor.close()
     for student in students:
-        student['profile_image_url'] = presigned_url(student.get('profile_image'))
-        student['resume_url'] = presigned_url(student.get('resume'))
+        student['profile_image_url'] = (presigned_url(student['profile_image'])
+        if student.get('profile_image')
+        else None
+        )
+        student['resume_url'] = (
+        presigned_url(student['resume'])
+        if student.get('resume')
+        else None
+        )
     return render_template('index.html', students=students)
 
 
